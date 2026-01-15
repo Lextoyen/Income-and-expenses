@@ -1,0 +1,269 @@
+:root {
+    /* ປ່ຽນໂທນສີໃໝ່ໃຫ້ເຂົ້າກັບສີຟ້າອົມຊົມພູ */
+    --primary-blue: #4a90e2;
+    --soft-pink: #fbc2eb;
+    --soft-blue: #a6c1ee;
+    --success-green: #4caf50;
+    --danger-red: #f44336;
+    --dark-text: #2c3e50;
+}
+
+body {
+    font-family: 'Noto Sans Lao', sans-serif;
+    /* ໄລ່ສີພື້ນຫຼັງແບບ Linear Gradient ຈາກຟ້າໄປຫາຊົມພູ */
+    background: linear-gradient(135deg, var(--soft-blue) 0%, var(--soft-pink) 100%);
+    background-attachment: fixed;
+    /* ໃຫ້ສີພື້ນຫຼັງຢູ່ກັບທີ່ເວລາ Scroll */
+    margin: 0;
+    padding: 20px;
+    color: var(--dark-text);
+    line-height: 1.6;
+}
+
+/* ປັບໃຫ້ Card ເບິ່ງມີຄວາມໂປ່ງໃສໜ້ອຍໜຶ່ງ (Glassmorphism) */
+.card,
+.form-section,
+.table-container {
+    background: rgba(255, 255, 255, 0.9);
+    /* ສີຂາວແບບຈາງໆ */
+    backdrop-filter: blur(10px);
+    /* ເຮັດໃຫ້ພື້ນຫຼັງມົວໆແບບແກ້ວ */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+/* ປັບປຸງປຸ່ມໃຫ້ເບິ່ງທັນສະໄໝຂຶ້ນ */
+.btn-add {
+    background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-add:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ປັບຂະໜາດ Font ໃຫ້ເໝາະສົມ */
+h1,
+h2,
+h3 {
+    font-weight: 700;
+}
+
+input,
+button,
+table {
+    font-family: 'Noto Sans Lao', sans-serif;
+    font-size: 14px;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+}
+
+header h1 {
+    text-align: center;
+    color: var(--primary-blue);
+}
+
+/* Summary Cards */
+.summary-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.income h3 {
+    color: var(--success-green);
+}
+
+.expense h3 {
+    color: var(--danger-red);
+}
+
+.profit h3 {
+    color: var(--primary-blue);
+}
+
+/* Form Section */
+.form-section {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+input {
+    flex: 1;
+    min-width: 150px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.btn-add {
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* Table Responsive */
+.table-container {
+    overflow-x: auto;
+    background: white;
+    border-radius: 12px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+th {
+    background-color: var(--light-blue);
+}
+
+.btn-delete {
+    background: var(--danger-red);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    .input-group {
+        flex-direction: column;
+    }
+}
+
+
+
+
+
+
+
+
+
+/* ປຸ່ມແກ້ໄຂ */
+.btn-edit {
+    background: #ffc107;
+    color: #000;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+/* ສ່ວນປຸ່ມແບ່ງໜ້າ */
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    gap: 5px;
+}
+
+.pagination-container button {
+    background: white;
+    border: 1px solid var(--primary-blue);
+    color: var(--primary-blue);
+    padding: 5px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.pagination-container button.active {
+    background: var(--primary-blue);
+    color: white;
+}
+
+
+
+
+
+
+
+
+/* ຈັດວາງກຸ່ມ Input ໃຫ້ມີຫົວໜ່ວຍ */
+.input-with-unit {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.input-with-unit input {
+    width: 100%;
+    padding-right: 45px !important;
+    /* ເວັ້ນຫວ່າງທາງທ້າຍໃຫ້ຕົວໜັງສື ກີບ */
+}
+
+/* ຕົວໜັງສື "ກີບ" ທາງທ້າຍ */
+.unit-text {
+    position: absolute;
+    right: 12px;
+    color: #888;
+    font-size: 0.85em;
+    pointer-events: none;
+    /* ໃຫ້ກົດທະລຸໄປຫາ Input ໄດ້ */
+    font-family: 'Noto Sans Lao', sans-serif;
+}
+
+
+
+.card p {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* ຕົກແຕ່ງຫົວໜ່ວຍເງິນທາງທ້າຍ */
+.card p span+text,
+.card p {
+    color: #333;
+}
+
+/* ຖ້າໃຊ້ ₭ ໃນ HTML ແບບ Text ທຳມະດາ ມັນຈະສະແດງຕາມ Font ຫຼັກ */

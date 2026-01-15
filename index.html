@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="lo">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ລະບົບບັນທຶກລາຍຮັບ-ລາຍຈ່າຍ</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>📊 ບັນທຶກລາຍຮັບ-ລາຍຈ່າຍ</h1>
+        </header>
+
+
+        <div class="chart-container" style="position: relative; margin: auto; height: 300px; width: 300px;">
+            <canvas id="myChart">
+
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+                <div class="chart-section"
+                    style="background: white; padding: 20px; border-radius: 15px; margin-bottom: 20px; max-width: 500px; margin-left: auto; margin-right: auto;">
+                    <h3 style="text-align: center;">📊 ກາຟສະຫຼຸບລາຍຮັບ-ລາຍຈ່າຍ</h3>
+                    <canvas id="myChart"></canvas>
+                </div>
+            </canvas>
+        </div>
+
+
+
+
+        <div class="summary-cards">
+            <div class="card income">
+                <h3>ລາຍຮັບລວມ</h3>
+                <p><span id="total-income">0</span> ₭</p>
+            </div>
+            <div class="card expense">
+                <h3>ລາຍຈ່າຍລວມ</h3>
+                <p><span id="total-expense">0</span> ₭</p>
+            </div>
+            <div class="card profit">
+                <h3>ກຳໄລລວມ</h3>
+                <p><span id="total-profit">0</span> ₭</p>
+            </div>
+        </div>
+
+
+        <div class="input-group">
+            <div class="form-section">
+                <h3 id="form-title">ເພີ່ມລາຍການໃໝ່</h3>
+                <p id="edit-notice"
+                    style="display:none; background: #fff3cd; color: #856404; padding: 10px; border-radius: 5px; border: 1px solid #ffeeba; margin-bottom: 10px;">
+                </p>
+
+                <div class="input-group">
+                    <input type="text" id="item-name" placeholder="ຊື່ສິນຄ້າ/ລາຍການ">
+                    <input type="number" id="item-qty" placeholder="ຈຳນວນ" min="1" value="1" style="flex: 0.4;">
+                    <input type="number" id="cost-price" placeholder="ຕົ້ນທຶນ/ໜ່ວຍ">
+                    <input type="number" id="sell-price" placeholder="ລາຄາຂາຍ/ໜ່ວຍ">
+
+                    <button onclick="addData()" class="btn-add">ບັນທຶກ</button>
+                    <button id="cancel-btn" onclick="cancelEdit()" style="display:none;"
+                        class="btn-delete">ຍົກເລີກ</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="search-section" style="margin-bottom: 15px; display: flex; gap: 10px;">
+            <input type="text" id="search-input" placeholder="🔍 ພິມຊື່ສິນຄ້າເພື່ອຄົ້ນຫາ..."
+                style="flex: 1; max-width: 300px;">
+            <button onclick="searchData()" class="btn-search"
+                style="background: var(--primary-blue); color: white; border: none; padding: 8px 15px; border-radius: 6px; cursor: pointer;">
+                ຄົ້ນຫາ
+            </button>
+            <button onclick="clearSearch()"
+                style="background: #ccc; border: none; padding: 8px 15px; border-radius: 6px; cursor: pointer;">
+                ລ້າງ
+            </button>
+        </div>
+
+
+
+
+        <div class="filter-section" style="margin-bottom: 20px; background: white; padding: 15px; border-radius: 12px;">
+            <label for="month-filter"><strong>📅 ເລືອກເບິ່ງຕາມເດືອນ:</strong></label>
+            <select id="month-filter" onchange="filterByMonth()"
+                style="padding: 8px; border-radius: 6px; border: 1px solid #ddd;">
+                <option value="all">ທັງໝົດ</option>
+                <option value="1">ເດືອນ 1 (ມັງກອນ)</option>
+                <option value="2">ເດືອນ 2 (ກຸມພາ)</option>
+                <option value="3">ເດືອນ 3 (ມີນາ)</option>
+                <option value="4">ເດືອນ 4 (ເມສາ)</option>
+                <option value="5">ເດືອນ 5 (ພຶດສະພາ)</option>
+                <option value="6">ເດືອນ 6 (ມິຖຸນາ)</option>
+                <option value="7">ເດືອນ 7 (ກໍລະກົດ)</option>
+                <option value="8">ເດືອນ 8 (ສິງຫາ)</option>
+                <option value="9">ເດືອນ 9 (ກັນຍາ)</option>
+                <option value="10">ເດືອນ 10 (ຕຸລາ)</option>
+                <option value="11">ເດືອນ 11 (ພະຈິກ)</option>
+                <option value="12">ເດືອນ 12 (ທັນວາ)</option>
+            </select>
+        </div>
+
+
+
+        <div class="table-container">
+            <table id="data-table">
+                <thead>
+                    <tr>
+                        <th>ວັນທີ</th>
+                        <th>ລາຍການ</th>
+                        <th>ຈຳນວນ</th>
+                        <th>ຕົ້ນທຶນລວມ</th>
+                        <th>ລາຄາຂາຍລວມ</th>
+                        <th>ກຳໄລລວມ</th>
+                        <th>ຈັດການ</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                </tbody>
+            </table>
+            <div id="pagination" class="pagination-container"></div>
+        </div>
+        <script src="script.js"></script>
+</body>
+
+</html>
